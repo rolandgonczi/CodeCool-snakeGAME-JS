@@ -1,6 +1,8 @@
+.rows td {
+    background-color: greenyellow;
+}
 
-
-.cols td {
+.cols {
     background-color: greenyellow;
     width: 15px;
     height: 15px;
@@ -11,4 +13,9 @@
     background-color: black;
     width: 600px;
     height: 600px;
+}
+
+.snake {
+    border: 1px solid white;
+    background-color: red;
 }
