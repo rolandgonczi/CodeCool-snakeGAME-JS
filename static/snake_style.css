@@ -1,0 +1,14 @@
+
+
+.cols td {
+    background-color: greenyellow;
+    width: 15px;
+    height: 15px;
+
+}
+
+#table {
+    background-color: black;
+    width: 600px;
+    height: 600px;
+}
