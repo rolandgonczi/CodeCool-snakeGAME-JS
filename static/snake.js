@@ -4,13 +4,16 @@ startGame.addEventListener("click", drawGame);
 
 function drawGame() {
     let container = document.getElementById('container');
-    let table = document.getElementById('table');
+    let table = document.createElement('table');
+    table.setAttribute('id', 'table');
+    container.appendChild(table);
+    let gameBoard = document.getElementById('table');
     function drawboard(){
         for (let row=0; row < 40; row++){
             let rows = document.createElement('tr');
             rows.setAttribute('class', 'row');
             rows.setAttribute('id', 'id' + row);
-            table.appendChild(rows);
+            gameBoard.appendChild(rows);
             for (let col=0; col<40; col++){
                 let cols = document.createElement('td');
                 cols.setAttribute('class', 'col');
