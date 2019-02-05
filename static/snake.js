@@ -2,12 +2,17 @@ let startGame = document.getElementById("start-game");
 
 startGame.addEventListener("click", drawGame);
 
+
 function drawGame() {
+
+
     let container = document.getElementById('container');
     let table = document.createElement('table');
     table.setAttribute('id', 'table');
     container.appendChild(table);
     let gameBoard = document.getElementById('table');
+
+
 
     function drawBoard(){
         for (let row=0; row < 40; row++){
@@ -26,19 +31,15 @@ function drawGame() {
             }
         }
         }
-        let snake = [{
-            coordinateX: 4,
-            coordinateY: 0
-        }, {
-            coordinateX: 3,
-            coordinateY: 0
-        }, {
-            coordinateX: 2,
-            coordinateY: 0
-        }, {
-            coordinateX: 1,
-            coordinateY: 0
-        }];
+
+
+    var length = 4;
+    var snake = [];
+
+    for(var i = length-1; i >= 0; i--) {
+        snake.push({coordinateX:i,coordinateY:0});
+    }
+
 
     function drawSnake() {
 
@@ -61,7 +62,11 @@ function drawGame() {
         snake.pop();
         snake.unshift(newHead)
         }
+
+
+
 drawBoard();
 setInterval(drawSnake,60);
+
 
 }
