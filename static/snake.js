@@ -33,7 +33,7 @@ function drawGame() {
         }
 
 
-    var length = 4;
+    var length = 5;
     var snake = [];
 
     for(var i = length-1; i >= 0; i--) {
@@ -66,7 +66,7 @@ function drawGame() {
 
 
 drawBoard();
-setInterval(drawSnake,60);
+setInterval(drawSnake,1000);
 
 
 }

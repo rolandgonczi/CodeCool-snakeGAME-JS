@@ -13,6 +13,7 @@
     background-color: black;
     width: 600px;
     height: 600px;
+    border-collapse: collapse;
 }
 
 .snake {
