@@ -9,7 +9,7 @@ function drawGame() {
     container.appendChild(table);
     let gameBoard = document.getElementById('table');
 
-    function drawboard(){
+    function drawBoard(){
         for (let row=0; row < 40; row++){
             let rows = document.createElement('tr');
             rows.setAttribute('class', 'row');
@@ -26,69 +26,42 @@ function drawGame() {
             }
         }
         }
-    function drawSnake() {
         let snake = [{
             coordinateX: 4,
             coordinateY: 0
-        },{
+        }, {
             coordinateX: 3,
             coordinateY: 0
-        },{
+        }, {
             coordinateX: 2,
             coordinateY: 0
-        },{
+        }, {
             coordinateX: 1,
             coordinateY: 0
-        }]
-        let headX = snake[0].coordinateX;
-        let headY = snake[0].coordinateY;
-        for (let i=0; i<snake.length; i++){
+        }];
+
+    function drawSnake() {
+
+        let tailX = snake[snake.length-1].coordinateX;
+        let tailY = snake[snake.length-1].coordinateY;
+        let snakeTail = document.getElementById(String(tailX) + "," + String(tailY));
+        for (let i = 0; i < snake.length; i++) {
             let coordinateX = snake[i].coordinateX;
             let coordinateY = snake[i].coordinateY;
-            let snakeGrid = document.getElementById(String(coordinateX)+","+ String(coordinateY));
+            let snakeGrid = document.getElementById(String(coordinateX) + "," + String(coordinateY));
             snakeGrid.setAttribute('class', 'snake')
-
-            }
-    }
-drawboard();
-drawSnake()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        }
+        let headX = snake[0].coordinateX;
+        let headY = snake[0].coordinateY;
+        let newHead = {
+            coordinateX: headX + 1,
+            coordinateY: headY
+        };
+        snakeTail.setAttribute('class', 'grid');
+        snake.pop();
+        snake.unshift(newHead)
+        }
+drawBoard();
+setInterval(drawSnake,60);
 
 }
