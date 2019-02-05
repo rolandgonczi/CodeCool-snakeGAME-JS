@@ -14,7 +14,7 @@ function drawGame() {
             for (let col=0; col<40; col++){
                 let cols = document.createElement('td');
                 cols.setAttribute('class', 'col');
-                cols.setAttribute('id', 'ids' + col);
+                cols.setAttribute('id', row + "," + col);
                 rows.appendChild(cols);
 
             }
