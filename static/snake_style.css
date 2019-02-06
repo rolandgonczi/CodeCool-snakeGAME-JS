@@ -1,27 +1,22 @@
-.rows td {
-    background-color: greenyellow;
-}
-
-.cols {
-    background-color: greenyellow;
-    width: 15px;
-    height: 15px;
-
-}
-
 #table {
     background-color: black;
     width: 600px;
     height: 600px;
     border-collapse: collapse;
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+td  {
+    height: 13px;
+    width: 13px;
+
 }
 
 .snake {
-    border: 1px solid white;
     background-color: green;
 }
 
 .food {
-    border: 1px solid red;
     background-color: red;
 }
