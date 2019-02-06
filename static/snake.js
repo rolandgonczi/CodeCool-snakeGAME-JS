@@ -86,9 +86,7 @@ function drawGame() {
         }
 
 
-
 drawBoard();
 setInterval(drawSnake,100);
-
 
 }
