@@ -33,10 +33,10 @@ function drawGame() {
         }
 
 
-    var length = 5;
-    var snake = [];
+    let length = 5;
+    let snake = [];
 
-    for(var i = length-1; i >= 0; i--) {
+    for(let i = length-1; i >= 0; i--) {
         snake.push({coordinateX:i,coordinateY:0});
     }
 
