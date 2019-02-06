@@ -42,7 +42,7 @@ function drawGame() {
 
     let direction = "right";
 
-    document.addEventListener("keydown", getDirection(event));
+    document.addEventListener("keydown", getDirection);
 
     function getDirection(event) {
         if(event.keyCode == 38 && direction != "down") {
@@ -88,7 +88,7 @@ function drawGame() {
 
 
 drawBoard();
-setInterval(drawSnake,1000);
+setInterval(drawSnake,100);
 
 
 }
