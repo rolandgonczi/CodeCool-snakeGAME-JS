@@ -56,6 +56,17 @@ function drawGame() {
         }
     }
 
+    let food = {
+        x: Math.round(Math.random() * 39),
+        y: Math.round(Math.random() * 39)
+    };
+
+
+    function drawFood(x, y) {
+        let foodGrid = document.getElementById(String(food.x) + "," + String(food.y))
+        foodGrid.setAttribute("class", "food")
+    }
+
 
     function drawSnake() {
 
@@ -68,6 +79,9 @@ function drawGame() {
             let snakeGrid = document.getElementById(String(coordinateX) + "," + String(coordinateY));
             snakeGrid.setAttribute('class', 'snake')
         }
+
+        drawFood(food.x, food.y);
+
         let headX = snake[0].coordinateX;
         let headY = snake[0].coordinateY;
 
@@ -76,17 +90,33 @@ function drawGame() {
         else if( direction == "right" ) headX++;
         else if( direction == "down" ) headY++;
 
-        let newHead = {
+        if (headX == food.x && headY == food.y) {
+            food = {
+                x: Math.round(Math.random() * 39),
+                y: Math.round(Math.random() * 39)
+            };
+            var newHead = {
+                coordinateX: headX,
+                coordinateY: headY
+            }
+        }else {
+            snakeTail.setAttribute('class', 'grid');
+            snake.pop();
+            newHead = {
             coordinateX: headX,
             coordinateY: headY
         };
-        snakeTail.setAttribute('class', 'grid');
-        snake.pop();
-        snake.unshift(newHead)
         }
+
+
+        snake.unshift(newHead)
+
+    }
 
 
 drawBoard();
 setInterval(drawSnake,100);
 
 }
+
+

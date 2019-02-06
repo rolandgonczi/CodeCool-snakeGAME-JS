@@ -18,5 +18,10 @@
 
 .snake {
     border: 1px solid white;
+    background-color: green;
+}
+
+.food {
+    border: 1px solid red;
     background-color: red;
 }
