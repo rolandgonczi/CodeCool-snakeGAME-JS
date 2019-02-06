@@ -13,13 +13,14 @@ function drawGame() {
     let gameBoard = document.getElementById('table');
 
 
-    function drawBoard() {
-        for (let row = 0; row < 40; row++) {
+
+    function drawBoard(){
+        for (let row=0; row < 40; row++){
             let rows = document.createElement('tr');
             rows.setAttribute('class', 'row');
             rows.setAttribute('id', 'id' + row);
             gameBoard.appendChild(rows);
-            for (let col = 0; col < 40; col++) {
+            for (let col=0; col<40; col++){
                 let cols = document.createElement('td');
                 cols.setAttribute('class', 'grid');
                 cols.setAttribute('id', col + "," + row);
@@ -29,14 +30,14 @@ function drawGame() {
 
             }
         }
-    }
+        }
 
 
     let length = 5;
     let snake = [];
 
-    for (let i = length - 1; i >= 0; i--) {
-        snake.push({coordinateX: i, coordinateY: 0});
+    for(let i = length-1; i >= 0; i--) {
+        snake.push({coordinateX:i,coordinateY:0});
     }
 
     let direction = "right";
@@ -44,30 +45,34 @@ function drawGame() {
     document.addEventListener("keydown", getDirection);
 
     function getDirection(event) {
-        if (event.keyCode === 38 && direction !== "down") {
+        if(event.keyCode == 38 && direction != "down") {
             direction = "up"
-        } else if (event.keyCode === 40 && direction !== "up") {
+        }else if (event.keyCode == 40 && direction != "up") {
             direction = "down"
-        } else if (event.keyCode === 37 && direction !== "right") {
+        }else if (event.keyCode == 37 && direction != "right") {
             direction = "left"
-        } else if (event.keyCode === 39 && direction !== "left") {
+        }else if(event.keyCode == 39 && direction != "left") {
             direction = "right"
         }
     }
 
+    let food = {
+        x: Math.round(Math.random() * 39),
+        y: Math.round(Math.random() * 39)
+    };
 
-    let foodX = Math.floor(Math.random() * 39);
-    let foodY = Math.floor(Math.random() * 39);
 
-    function drawFood(foodX, foodY) {
-        document.getElementById(String(foodX) + "," + String(foodY)).setAttribute('class', 'food');
+    function drawFood(x, y) {
+        let foodGrid = document.getElementById(String(food.x) + "," + String(food.y))
+        foodGrid.setAttribute("class", "food")
     }
 
 
-    function drawSnake(foodX,foodY) {
+    function drawSnake() {
 
-        let tailX = snake[snake.length - 1].coordinateX;
-        let tailY = snake[snake.length - 1].coordinateY;
+
+        let tailX = snake[snake.length-1].coordinateX;
+        let tailY = snake[snake.length-1].coordinateY;
         let snakeTail = document.getElementById(String(tailX) + "," + String(tailY));
         for (let i = 0; i < snake.length; i++) {
             let coordinateX = snake[i].coordinateX;
@@ -75,46 +80,47 @@ function drawGame() {
             let snakeGrid = document.getElementById(String(coordinateX) + "," + String(coordinateY));
             snakeGrid.setAttribute('class', 'snake')
         }
+
+        drawFood(food.x, food.y);
+
+
         let headX = snake[0].coordinateX;
         let headY = snake[0].coordinateY;
 
-        if (direction === "left") headX--;
-        else if (direction === "up") headY--;
-        else if (direction === "right") headX++;
-        else if (direction === "down") headY++;
 
-        console.log(document.getElementsByClassName('food').dataset.coordinateX)
-        if (headX === foodX && headY === foodY) {
-            document.getElementById(String(foodX) + "," + String(foodY)).setAttribute('class', 'grid');
-            let newHead = {
+        if( direction == "left" ) headX--;
+        else if( direction == "up" ) headY--;
+        else if( direction == "right" ) headX++;
+        else if( direction == "down" ) headY++;
+
+
+        if (headX == food.x && headY == food.y) {
+            food = {
+                x: Math.round(Math.random() * 39),
+                y: Math.round(Math.random() * 39)
+            };
+            var newHead = {
                 coordinateX: headX,
                 coordinateY: headY
-            };
-
-            snake.unshift(newHead);
-            drawFood(foodX, foodY)
-
-        } else {
-
-            let newHead = {
-                coordinateX: headX,
-                coordinateY: headY
-            };
+            }
+        }else {
             snakeTail.setAttribute('class', 'grid');
             snake.pop();
-            snake.unshift(newHead)
+            newHead = {
+            coordinateX: headX,
+            coordinateY: headY
+        };
         }
 
+
+        snake.unshift(newHead)
 
     }
 
 
-
 drawBoard();
-drawFood(foodX, foodY)
-setInterval(drawSnake,400);
-console.log(document.getElementsByClassName('food').dataset.coordinateX)
-
-
+setInterval(drawSnake,60);
 
 }
+
+

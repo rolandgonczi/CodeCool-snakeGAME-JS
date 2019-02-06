@@ -4,7 +4,7 @@ app = Flask(__name__)
 
 
 @app.route('/')
-def snake_gama():
+def snake_game():
     return render_template('snakeGame_TW.html')
 
 
