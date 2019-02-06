@@ -70,8 +70,14 @@ function drawGame() {
         }
         let headX = snake[0].coordinateX;
         let headY = snake[0].coordinateY;
+
+        if( direction == "left" ) headX--;
+        else if( direction == "up" ) headY--;
+        else if( direction == "right" ) headX++;
+        else if( direction == "down" ) headY++;
+
         let newHead = {
-            coordinateX: headX + 1,
+            coordinateX: headX,
             coordinateY: headY
         };
         snakeTail.setAttribute('class', 'grid');
