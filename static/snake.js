@@ -70,6 +70,7 @@ function drawGame() {
 
     function drawSnake() {
 
+
         let tailX = snake[snake.length-1].coordinateX;
         let tailY = snake[snake.length-1].coordinateY;
         let snakeTail = document.getElementById(String(tailX) + "," + String(tailY));
@@ -82,13 +83,16 @@ function drawGame() {
 
         drawFood(food.x, food.y);
 
+
         let headX = snake[0].coordinateX;
         let headY = snake[0].coordinateY;
+
 
         if( direction == "left" ) headX--;
         else if( direction == "up" ) headY--;
         else if( direction == "right" ) headX++;
         else if( direction == "down" ) headY++;
+
 
         if (headX == food.x && headY == food.y) {
             food = {
@@ -115,7 +119,7 @@ function drawGame() {
 
 
 drawBoard();
-setInterval(drawSnake,100);
+setInterval(drawSnake,60);
 
 }
 
