@@ -40,6 +40,22 @@ function drawGame() {
         snake.push({coordinateX:i,coordinateY:0});
     }
 
+    let direction = "right";
+
+    document.addEventListener("keydown", getDirection(event));
+
+    function getDirection(event) {
+        if(event.keyCode == 38 && direction != "down") {
+            direction = "up"
+        }else if (event.keyCode == 40 && direction != "up") {
+            direction = "down"
+        }else if (event.keyCode == 37 && direction != "right") {
+            direction = "left"
+        }else if(event.keyCode == 39 && direction != "left") {
+            direction = "right"
+        }
+    }
+
 
     function drawSnake() {
 
