@@ -1,10 +1,10 @@
 body {
-    background-color: grey;
+    background-color: white;
     text-align: center;
 }
 
 #start-game {
-    margin-bottom: 40px;
+    margin-bottom: 10px;
     margin-top: 20px;
 }
 
@@ -25,6 +25,7 @@ body {
     border-collapse: collapse;
     margin-left: 50px;
     margin-right: 50px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 td  {
