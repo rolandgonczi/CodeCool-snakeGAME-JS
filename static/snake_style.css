@@ -3,6 +3,7 @@ body {
     text-align: center;
 }
 
+
 #start-game {
     margin-bottom: 10px;
     margin-top: 20px;
@@ -66,4 +67,47 @@ button {
     border: none;
     outline: none;
     overflow: hidden;
+}
+
+
+
+.slidecontainer {
+  width: 100%;
+  -webkit-align-items: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+
+.slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 25%;
+  height: 20px; /* Specified height */
+  background: black; /* Grey background */
+  outline: none; /* Remove outline */
+  opacity: 0.5; /* Set transparency (for mouse-over effects on hover) */
+  -webkit-transition: .2s; /* 0.2 seconds transition on hover */
+  transition: opacity .2s;
+}
+
+
+.slider:hover {
+  opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none; /* Override default look */
+  appearance: none;
+  width: 25px; /* Set a specific slider handle width */
+  height: 25px; /* Slider handle height */
+  background: green; /* Green background */
+  cursor: pointer; /* Cursor on hover */
+}
+
+.slider::-moz-range-thumb {
+  width: 25px; /* Set a specific slider handle width */
+  height: 25px; /* Slider handle height */
+  background: green; /* Green background */
+  cursor: pointer; /* Cursor on hover */
 }

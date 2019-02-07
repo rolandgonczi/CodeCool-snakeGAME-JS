@@ -2,8 +2,24 @@ let startGame = document.getElementById("start-game");
 
 startGame.addEventListener("click", drawGame);
 
+let slider = document.getElementById("myRange");
+let output = document.getElementById("demo");
+let snakeSpeed = Math.floor(1000/slider.value)*5;
+output.innerHTML = snakeSpeed;
+
+
+slider.oninput = function() {
+  output.innerHTML = Math.floor(1000/this.value)*5;
+  snakeSpeed = Math.floor(1000/this.value)*5;
+};
+
+
+console.log(snakeSpeed);
+
 function drawGame() {
 
+
+    console.log(snakeSpeed);
 
     let container = document.getElementById('container');
     let table = document.createElement('table');
@@ -141,6 +157,6 @@ function drawGame() {
 
 
 drawBoard();
-setInterval(drawSnake,100);
+setInterval(drawSnake,snakeSpeed);
 
 }
