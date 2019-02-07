@@ -31,7 +31,7 @@ function drawGame() {
         table.remove();
         let image = document.createElement('img');
         image.setAttribute('id', 'image');
-        image.setAttribute('src', '/static/images/gameOver3.png');
+        image.setAttribute('src', '/static/images/gameOver.png');
         container.appendChild(image);
         clearInterval(refreshIntervalId);
     }
