@@ -74,6 +74,7 @@ function drawGame() {
         let snakeTail = document.getElementById(String(tailX) + "," + String(tailY));
         let headX = snake[0].coordinateX;
         let headY = snake[0].coordinateY;
+        document.getElementById('score').textContent = 'Score: ' + String(snake.length-5);
 
         if( direction == "left" ) headX--;
         else if( direction == "up" ) headY--;

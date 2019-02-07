@@ -40,3 +40,21 @@ td  {
 .food {
     background-color: red;
 }
+
+.title {
+    font-family: '8BITWONDERNominal';
+    font-weight: normal;
+    font-style: normal;
+    text-align: center;
+}
+
+#score {
+
+}
+
+button {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    overflow: hidden;
+}
