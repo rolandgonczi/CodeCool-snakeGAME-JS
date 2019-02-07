@@ -164,5 +164,4 @@ function drawGame() {
 
 drawBoard();
 let refreshIntervalId = setInterval(drawSnake,snakeSpeed);
-
 }
