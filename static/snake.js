@@ -14,18 +14,27 @@ slider.oninput = function() {
 };
 
 
-console.log(snakeSpeed);
-
 function drawGame() {
-
-
-    console.log(snakeSpeed);
-
     let container = document.getElementById('container');
     let table = document.createElement('table');
     table.setAttribute('id', 'table');
     container.appendChild(table);
     let gameBoard = document.getElementById('table');
+
+    if (document.getElementById('image')) {
+        let image = document.getElementById('image');
+        image.remove();
+    }
+
+
+    function gameOver() {
+        table.remove();
+        let image = document.createElement('img');
+        image.setAttribute('id', 'image');
+        image.setAttribute('src', '/static/images/gameOver3.png');
+        container.appendChild(image);
+        clearInterval(refreshIntervalId);
+    }
 
 
     function drawBoard() {
@@ -90,7 +99,6 @@ function drawGame() {
     }
 
 
-
     function drawSnake() {
 
         let tailX = snake[snake.length-1].coordinateX;
@@ -126,7 +134,7 @@ function drawGame() {
             newHead = {
             coordinateX: headX,
             coordinateY: headY
-        };
+            };
         }
 
         snake.unshift(newHead);
@@ -141,22 +149,20 @@ function drawGame() {
             }
         }
         catch (TypeError) {
-            alert('Game over!');
-            window.location.reload();
+            gameOver();
         }
 
 
 
         for (let i = 1; i < snake.length; i++) {
             if (newHead.coordinateX === snake[i].coordinateX && newHead.coordinateY === snake[i].coordinateY) {
-                alert('Game over, collision!');
-                window.location.reload();
+                gameOver();
             }
         }
     }
 
 
 drawBoard();
-setInterval(drawSnake,snakeSpeed);
+let refreshIntervalId = setInterval(drawSnake,snakeSpeed);
 
 }

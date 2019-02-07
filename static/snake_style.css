@@ -54,7 +54,7 @@ td  {
 
 }
 
-img {
+#play-button {
     display: block;
     max-width: 128px;
     max-height: 55px;
@@ -110,4 +110,9 @@ button {
   height: 25px;
   background: green;
   cursor: pointer;
+}
+
+#image {
+    width: auto;
+    height: 300px;
 }
