@@ -2,7 +2,6 @@ let startGame = document.getElementById("start-game");
 
 startGame.addEventListener("click", drawGame);
 
-
 function drawGame() {
 
 

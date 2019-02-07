@@ -1,3 +1,23 @@
+body {
+    background-color: grey;
+    text-align: center;
+}
+
+#start-game {
+    margin-bottom: 40px;
+    margin-top: 20px;
+}
+
+
+#container {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+}
+
 #table {
     background-color: black;
     width: 600px;
