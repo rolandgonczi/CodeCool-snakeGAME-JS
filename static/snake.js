@@ -33,7 +33,7 @@ function drawGame() {
         }
 
 
-    let length = 5;
+    let length = 15;
     let snake = [];
 
     for(let i = length-1; i >= 0; i--) {
@@ -62,13 +62,7 @@ function drawGame() {
         let tailX = snake[snake.length-1].coordinateX;
         let tailY = snake[snake.length-1].coordinateY;
         let snakeTail = document.getElementById(String(tailX) + "," + String(tailY));
-        for (let i = 0; i < snake.length; i++) {
-            let coordinateX = snake[i].coordinateX;
-            let coordinateY = snake[i].coordinateY;
-            let snakeGrid = document.getElementById(String(coordinateX) + "," + String(coordinateY));
-            snakeGrid.setAttribute('class', 'snake')
-        }
-        let headX = snake[0].coordinateX;
+                let headX = snake[0].coordinateX;
         let headY = snake[0].coordinateY;
 
         if( direction == "left" ) headX--;
@@ -82,11 +76,32 @@ function drawGame() {
         };
         snakeTail.setAttribute('class', 'grid');
         snake.pop();
-        snake.unshift(newHead)
+        snake.unshift(newHead);
+        try {
+            for (let i = 0; i < snake.length; i++) {
+                let coordinateX = snake[i].coordinateX;
+                let coordinateY = snake[i].coordinateY;
+                let snakeGrid = document.getElementById(String(coordinateX) + "," + String(coordinateY));
+                snakeGrid.setAttribute('class', 'snake');
+
+            }
         }
+        catch (TypeError) {
+            alert('Game over!');
+            window.location.reload();
+        }
+
+        for (let i = 1; i < snake.length; i++) {
+            if (newHead.coordinateX === snake[i].coordinateX && newHead.coordinateY === snake[i].coordinateY) {
+                alert('Game over, collision!');
+                window.location.reload();
+            }
+        }
+    }
+
 
 
 drawBoard();
-setInterval(drawSnake,100);
+setInterval(drawSnake,250);
 
 }
