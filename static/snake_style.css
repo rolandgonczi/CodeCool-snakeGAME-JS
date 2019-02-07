@@ -83,11 +83,11 @@ button {
   -webkit-appearance: none;
   appearance: none;
   width: 25%;
-  height: 20px; /* Specified height */
-  background: black; /* Grey background */
-  outline: none; /* Remove outline */
-  opacity: 0.5; /* Set transparency (for mouse-over effects on hover) */
-  -webkit-transition: .2s; /* 0.2 seconds transition on hover */
+  height: 20px;
+  background: black;
+  outline: none;
+  opacity: 0.5;
+  -webkit-transition: .2s;
   transition: opacity .2s;
 }
 
@@ -97,17 +97,17 @@ button {
 }
 
 .slider::-webkit-slider-thumb {
-  -webkit-appearance: none; /* Override default look */
+  -webkit-appearance: none;
   appearance: none;
-  width: 25px; /* Set a specific slider handle width */
-  height: 25px; /* Slider handle height */
-  background: green; /* Green background */
-  cursor: pointer; /* Cursor on hover */
+  width: 25px;
+  height: 25px;
+  background: green;
+  cursor: pointer;
 }
 
 .slider::-moz-range-thumb {
-  width: 25px; /* Set a specific slider handle width */
-  height: 25px; /* Slider handle height */
-  background: green; /* Green background */
-  cursor: pointer; /* Cursor on hover */
+  width: 25px;
+  height: 25px;
+  background: green;
+  cursor: pointer;
 }
