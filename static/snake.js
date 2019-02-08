@@ -1,31 +1,29 @@
 let startGame = document.getElementById("start-game");
-
-startGame.addEventListener("click", drawGame);
-
 let slider = document.getElementById("myRange");
 let output = document.getElementById("demo");
 let snakeSpeed = Math.floor(1000/slider.value)*5;
 output.innerHTML = slider.value;
 
 
+startGame.addEventListener("click", drawGame);
 slider.oninput = function() {
   output.innerHTML = this.value;
   snakeSpeed = Math.floor(1000/this.value)*5;
 };
 
 
-function drawGame() {
-    let container = document.getElementById('container');
-    let table = document.createElement('table');
-    table.setAttribute('id', 'table');
-    container.appendChild(table);
-    let gameBoard = document.getElementById('table');
-
-    if (document.getElementById('image')) {
-        let image = document.getElementById('image');
-        image.remove();
+let Snake = {
+    snakeLength: 5,
+    drawSnake: function () {
+        document
+        Snake.snakeLength++
     }
+};
 
+Snake.drawSnake();
+
+
+function drawGame() {
 
     function gameOver() {
         table.remove();
@@ -35,7 +33,6 @@ function drawGame() {
         container.appendChild(image);
         clearInterval(refreshIntervalId);
     }
-
 
     function drawBoard() {
         for (let row = 0; row < 40; row++) {
@@ -55,18 +52,6 @@ function drawGame() {
         }
     }
 
-
-    let length = 5;
-    let snake = [];
-
-    for (let i = length - 1; i >= 0; i--) {
-        snake.push({coordinateX: i, coordinateY: 0});
-    }
-
-    let direction = "right";
-
-    document.addEventListener("keydown", getDirection);
-
     function getDirection(event) {
         if (event.keyCode == 38 && direction != "down") {
             direction = "up"
@@ -78,12 +63,6 @@ function drawGame() {
             direction = "right"
         }
     }
-
-    let food = {
-        x: Math.round(Math.random() * 39),
-        y: Math.round(Math.random() * 39)
-    };
-
 
     function drawFood(x, y) {
         for (let i = length - 1; i >= 0; i--) {
@@ -97,7 +76,6 @@ function drawGame() {
         let foodGrid = document.getElementById(String(food.x) + "," + String(food.y))
         foodGrid.setAttribute("class", "food")
     }
-
 
     function drawSnake() {
 
@@ -161,7 +139,36 @@ function drawGame() {
         }
     }
 
+    function initBoard() {
+        if (document.getElementById('image')) {
+            let image = document.getElementById('image');
+            image.remove();
+        }
 
-drawBoard();
-let refreshIntervalId = setInterval(drawSnake,snakeSpeed);
+        let length = 5;
+        let snake = [];
+        for (let i = length - 1; i >= 0; i--) {
+            snake.push({coordinateX: i, coordinateY: 0});
+        }
+
+        let direction = "right";
+
+        document.addEventListener("keydown", getDirection);
+
+        let food = {
+            x: Math.round(Math.random() * 39),
+            y: Math.round(Math.random() * 39)
+        };
+
+    }
+
+    let container = document.getElementById('container');
+    let table = document.createElement('table');
+    table.setAttribute('id', 'table');
+    container.appendChild(table);
+    let gameBoard = document.getElementById('table');
+
+    initBoard();
+    drawBoard();
+    let refreshIntervalId = setInterval(drawSnake,snakeSpeed);
 }
